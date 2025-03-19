@@ -8,15 +8,17 @@ application), clicking on the '+' button while the screen is open shows a detail
 game.  Orchid won't have the location feature, but will showcase pokemon as volumes on a bookshelf.
 
 # Development
+## Hardware
 I am developing Orchid on a Macbook Pro with an M3 chip.  The Macbook has the following specs:
 * Model Name: MacBook Pro
 * Model Identifier: Mac15,3
 * Model Number: MTL73LL/A
 * Chip:	Apple M3
 * Total Number of Cores: 8 (4 performance and 4 efficiency)
-* Memory:	8 GB
-As I write this (19 March 2025), the Macbook runs macOS Sequoia, version 15.3.2.
+* Memory: 8 GB
+* OS: macOS Sequoia, version 15.3.2.
 
+## Runtimes
 Being a C# developer, I am using .NET 9.0.  Typing (in the terminal) the following: .NET --info yields the following
 information:
 ```    
@@ -41,6 +43,7 @@ information:
         Install Type:        FileBased
 ```
 
+## IDEs
 I am using Jetbrain's Rider IDE to write and test the application.  At the time of this writing, Rider is free for use, 
 simply download it from Jetbrain's website.
 ```
