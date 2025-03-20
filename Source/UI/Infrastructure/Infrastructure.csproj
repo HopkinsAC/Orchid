@@ -1,0 +1,8 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+   <PropertyGroup>
+      <AssemblyName>Orchid.UI.Infrastructure</AssemblyName>
+      <RootNamespace>Orchid.UI.Infrastructure</RootNamespace>
+   </PropertyGroup>
+
+</Project>
