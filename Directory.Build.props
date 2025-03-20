@@ -1,0 +1,25 @@
+<Project>
+
+   <PropertyGroup Label="General">
+      <Version>0.0.1</Version>
+      <Description>Orchid is a pokédex based on the Scarlet/Violet in-game pokédex.</Description>
+      <TargetFramework>net9.0</TargetFramework>
+      <LangVersion>13</LangVersion>
+      <ImplicitUsings>enable</ImplicitUsings>
+      <Nullable>enable</Nullable>
+   </PropertyGroup>
+
+   <PropertyGroup Label="Warnings">
+      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+      <NoWarn>1701;1702;1591;8500</NoWarn>
+   </PropertyGroup>
+   
+   <PropertyGroup Label="Debug" Condition="'$(Configuration)'=='Debug'">
+      <OutputPath>$(SolutionDir)/Builds/Debug/</OutputPath>
+   </PropertyGroup>
+
+   <PropertyGroup Label="Release" Condition="'$(Configuration)'=='Release'">
+      <OutputPath>$(SolutionDir)/Builds/Release/</OutputPath>
+   </PropertyGroup>
+
+</Project>

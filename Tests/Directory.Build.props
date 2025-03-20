@@ -1,0 +1,22 @@
+<Project>
+   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+   
+   <ItemGroup Label="Nuget Packages">
+      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0"/>
+      <PackageReference Include="xunit" Version="2.9.3"/>
+      <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0">
+         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+         <PrivateAssets>all</PrivateAssets>
+      </PackageReference>
+      
+      <PackageReference Include="Moq" Version="4.20.72"/>
+      <PackageReference Include="FluentAssertions" Version="7.0.0"/>
+   </ItemGroup>
+  
+   <ItemGroup Label="Implicit Using Statements">
+      <Using Include="Moq"/>
+      <Using Include="FluentAssertions"/>
+      <Using Include="Xunit"/>
+   </ItemGroup>
+   
+</Project>
