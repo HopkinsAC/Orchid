@@ -2,19 +2,27 @@
 // Copyright (C) 2025.  Andrew C. Hopkins.  All Rights Reserved.
 //
 
+using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Orchid.UI.ViewModels;
 using Orchid.UI.Views;
+using Prism.DryIoc;
 
 namespace Orchid.UI;
 
-public partial class App : Avalonia.Application
+public partial class App : PrismApplication 
 {
+   // Construction
+   //
+   
+   // API
+   //
    public override void Initialize()
    {
       AvaloniaXamlLoader.Load(this);
+      base.Initialize();
    }
 
    public override void OnFrameworkInitializationCompleted()
@@ -31,5 +39,14 @@ public partial class App : Avalonia.Application
       }
 
       base.OnFrameworkInitializationCompleted();
+   }
+
+   protected override void RegisterTypes(IContainerRegistry containerRegistry)
+   {
+   }
+
+   protected override AvaloniaObject CreateShell()
+   {
+      return Container.Resolve<MainWindow>();
    }
 }
