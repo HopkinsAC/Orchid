@@ -3,18 +3,197 @@
         xmlns:vm="using:Orchid.UI.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        
+        mc:Ignorable="d"
+        d:DesignWidth="800"
+        d:DesignHeight="450"
+        
         x:Class="Orchid.UI.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="Application">
+        
+        Title="Rose/Orchid Pokedex (Mockup)"
+        Width="1600"
+        Height="900"
+        Background="CornflowerBlue"
+  
+        CanResize="False"
+        WindowStartupLocation="CenterScreen"
+        ExtendClientAreaToDecorationsHint="True"
+        >
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
+             to set the actual DataContext for runtime, set the DataContext
+             property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Grid RowDefinitions="1*,2*,15*,2*,3*,1*"
+          ColumnDefinitions="3*,45*,3*">
 
+        <!-- Header -->
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                Background="White">
+            <DockPanel>
+                <Rectangle DockPanel.Dock="Bottom"
+                           Fill="SaddleBrown"
+                           Height="5" />
+                <TextBlock Text="Rose/Orchid Pokedex (Mockup)"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </DockPanel>
+        </Border>
+
+        <!-- Footer -->
+        <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"
+                Background="White">
+            <DockPanel>
+                <Rectangle DockPanel.Dock="Top"
+                           Fill="SaddleBrown"
+                           Height="5" />
+                <TextBlock Text="Written by AHopkins"
+                           FontSize="16"
+                           Margin="0 0 10 0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center" />
+            </DockPanel>
+        </Border>
+        
+        <!-- Controls -->
+        <Button Grid.Row="2" Grid.Column="0"
+                Height="100"
+                Width="50">
+            <TextBlock Text="&#x2190;"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       />
+        </Button>
+
+        <Button Grid.Row="2" Grid.Column="2"
+                Height="100"
+                Width="50"
+                HorizontalAlignment="Right">
+            <TextBlock Text="&#x2192;"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       />
+        </Button>
+
+        <!-- Books -->
+        <ListBox Grid.Row="2" Grid.Column="1"
+                 ItemsSource="{Binding Pokemon}"
+                 Margin="95 0"
+                 Padding="0"
+                 Background="CornflowerBlue">
+            <ListBox.Styles>
+                <Style Selector="ListBoxItem">
+                    <Setter Property="Padding" Value="0" />
+                </Style>
+            </ListBox.Styles>
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="5"
+                            Background="Gray"
+                            Margin="0 0 0 0"
+                            Padding="0 0 0 0"
+                            BoxShadow="inset 5 5 20 0 Black">
+                        <DockPanel>
+                            <Border DockPanel.Dock="Top"
+                                    Width="75"
+                                    Height="75"
+                                    CornerRadius="5"
+                                    Background="Blue"
+                                    Margin="15" />
+                            <Border DockPanel.Dock="Top"
+                                    Width="100"
+                                    Height="10"
+                                    CornerRadius="0"
+                                    Background="OrangeRed"
+                                    BoxShadow="inset 5 0 20 0 Black"
+                                    Margin="0" />
+                            <TextBlock DockPanel.Dock="Bottom"
+                                       Text="{Binding PokedexID,StringFormat={}{0:000}}"
+                                       Margin="10"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="36"
+                                       Foreground="Black" />
+                            <Border DockPanel.Dock="Bottom"
+                                    Width="100"
+                                    Height="10"
+                                    CornerRadius="0"
+                                    Background="OrangeRed"
+                                    BoxShadow="inset 5 0 20 0 Black"
+                                    Margin="0" />
+
+                            <LayoutTransformControl HorizontalAlignment="Center"
+                                                    VerticalAlignment="Top"
+                                                    Margin="10">
+                                <LayoutTransformControl.LayoutTransform>
+                                    <RotateTransform Angle="90"></RotateTransform>
+                                </LayoutTransformControl.LayoutTransform>
+
+                                <TextBlock Text="{Binding Name}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           FontWeight="Bold"
+                                           FontSize="36"
+                                           Foreground="Black" />
+                            </LayoutTransformControl>
+
+                        </DockPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
+        
+        <!-- Shelf -->
+        <Border Grid.Row="3" Grid.Column="1"
+                CornerRadius="10"
+                Background="SaddleBrown" 
+                BoxShadow="inset 5 5 20 0 Black">
+            <Grid RowDefinitions="1*,4*,1*"
+                  ColumnDefinitions="3*,2*,3*">
+
+                <!-- Name Plate -->
+                <Border Grid.Row="1" Grid.Column="1"
+                        CornerRadius="5"
+                        Background="Goldenrod"
+                        BoxShadow="5 5 10 0 Black">
+                    <ComboBox ItemsSource="{Binding Pokedexes}"
+                              SelectedIndex="0"
+                              HorizontalAlignment="Center"
+                              Width="300"
+                              Background="Goldenrod"
+                              BorderThickness="0"
+                              Margin="5"
+                              FontFamily="Academy Engraved LET"
+                              FontSize="26"
+                              FontWeight="Bold">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                            <TextBlock Text="{Binding}"
+                                       HorizontalAlignment="Center"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+    
 </Window>

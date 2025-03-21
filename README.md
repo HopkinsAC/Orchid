@@ -1,22 +1,34 @@
 # Orchid
 Orchid is the codename for a comprehensive Pokédex application.
 
-Orchid is a pokédex application based on the pokédex found in the mainline Pokémon games, Scarlet and Violet.  The
-pokédex consists of a bookshelf where each volume is a separate pokemon found in the game.  Selecting a volume opens up
-a screen showcasing the pokemon's flavor text, typing, and height/weight stats.  Further more (not relative to this 
-application), clicking on the '+' button while the screen is open shows a detailed map of the pokémon's location in the
-game.  Orchid won't have the location feature, but will showcase pokemon as volumes on a bookshelf.
+## Original Game
+Orchid is a pokédex application based on the pokédex found in the mainline Pokémon games, Scarlet and Violet.
+The Scarlet/Violet pokédex consists of a bookshelf where each volume is a separate pokemon found in the game.
+Selecting a volume opens up a screen showcasing the pokemon's flavor text, typing, and height/weight stats.
+Further more, clicking on the '+' button while the screen is open shows a detailed, in-game map of the
+pokémon's location.
+
+Orchid won't have the location feature, but will showcase pokémon as volumes on a bookshelf. Clicking on
+a book will open a book-like screen, where the user will be able to flip through pages that describe
+a pokémon such as typing, breeding, movesets, flavor texts, etc.  The user will be able to change pokédexes
+by selecting a regional pokédex from the drop down 'name plate'.
+
+![A mockup of the shelf view of the pokédex](./Docs/Assets/Mockup-A-0.0.1.png)
 
 # Development
+I am developing Orchid using the following hardware and tools.
+
 ## Hardware
 I am developing Orchid on a Macbook Pro with an M3 chip.  The Macbook has the following specs:
-* Model Name: MacBook Pro
-* Model Identifier: Mac15,3
-* Model Number: MTL73LL/A
-* Chip:	Apple M3
-* Total Number of Cores: 8 (4 performance and 4 efficiency)
-* Memory: 8 GB
-* OS: macOS Sequoia, version 15.3.2.
+```
+    Model Name: MacBook Pro
+    Model Identifier: Mac15,3
+    Model Number: MTL73LL/A
+    Chip: Apple M3
+    Total Number of Cores: 8 (4 performance and 4 efficiency)
+    Memory: 8 GB
+    OS: macOS Sequoia, version 15.3.2.
+```
 
 ## Runtimes
 Being a C# developer, I am using .NET 9.0.  Typing (in the terminal) the following: .NET --info yields the following
@@ -56,5 +68,7 @@ Runtime version: 21.0.6+8-b631.39 aarch64 (JCEF 122.1.9)
 The easiest way to build Orchid is to start Rider, open the solution, and select 'Rebuild Solution' from the Build menu.
 The second way is to open a terminal, navigate to the solution directory, and enter: dotnet build
 
-# Running
+(TODO Expand the build instructions)
 
+# Running
+(TODO Expand the run instructions)
