@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
    <PropertyGroup>
-      <AssemblyName>Orchid.PokeApi</AssemblyName>
-      <RootNamespace>Orchid.PokeApi</RootNamespace>
+      <AssemblyName>Orchid.Api</AssemblyName>
+      <RootNamespace>Orchid.Api</RootNamespace>
    </PropertyGroup>
 
    <ItemGroup>

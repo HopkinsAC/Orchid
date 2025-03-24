@@ -7,8 +7,10 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.Logging;
+using Orchid.Api;
 using Orchid.Logging;
 using Orchid.Profiling;
+using Orchid.Services;
 using Orchid.UI.Views;
 using Prism.DryIoc;
 
@@ -88,12 +90,26 @@ public partial class App : PrismApplication
       base.OnFrameworkInitializationCompleted();
    }
 
+   protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+   {
+      var servicesModule = typeof(ServicesModule);
+      moduleCatalog.AddModule(new ModuleInfo()
+      {
+         ModuleName = servicesModule.Name,
+         ModuleType = servicesModule.AssemblyQualifiedName
+      });
+   }
+
    protected override void RegisterTypes(IContainerRegistry containerRegistry)
    {
 #if PROFILING
       using var mp = new MethodProfiler();
 #endif
-
+      
+      containerRegistry.RegisterSingleton<IPokeApi>(() => new PokeApi(new HttpClient()
+      {
+         BaseAddress = new Uri("https://pokeapi.co/api/v2/")
+      }));
    }
 
    protected override AvaloniaObject CreateShell()
@@ -108,8 +124,14 @@ public partial class App : PrismApplication
    
    private void LoadData()
    {
-      try
+ #if PROFILING
+       using var mp = new MethodProfiler();
+ #endif
+       
+       try
       {
+         var servicesModule = Container.Resolve<ServicesModule>();
+         servicesModule.LoadData();
       }
    
       catch (Exception e)
@@ -123,7 +145,5 @@ public partial class App : PrismApplication
 #if PROFILING
       ProfileServer.Instance.EndSession();
 #endif
-      
    }
-
 }

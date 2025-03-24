@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Source\Core\Core.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Source\Domain\Domain.csproj", "{9BF5B3C6-7EFC-4B72-A96B-9C00D508345A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokeApi", "Source\PokeApi\PokeApi.csproj", "{E6742EA6-32DD-4EA5-B9FB-F69D042E3908}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Source\Api\Api.csproj", "{E6742EA6-32DD-4EA5-B9FB-F69D042E3908}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Source\Services\Services.csproj", "{6ED0B185-32D1-4F76-A1F3-293C82265467}"
 EndProject

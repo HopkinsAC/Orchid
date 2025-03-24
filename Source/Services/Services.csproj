@@ -8,7 +8,12 @@
    <ItemGroup>
      <ProjectReference Include="..\Core\Core.csproj" />
      <ProjectReference Include="..\Domain\Domain.csproj" />
-     <ProjectReference Include="..\PokeApi\PokeApi.csproj" />
+     <ProjectReference Include="..\Api\Api.csproj" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <PackageReference Include="Prism.Avalonia" Version="9.0.537.11130" />
+     <PackageReference Include="Prism.Core" Version="9.0.537" />
    </ItemGroup>
    
 </Project>

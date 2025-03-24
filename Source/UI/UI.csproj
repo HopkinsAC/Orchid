@@ -39,7 +39,7 @@
    <ItemGroup>
      <ProjectReference Include="..\Core\Core.csproj" />
      <ProjectReference Include="..\Domain\Domain.csproj" />
-     <ProjectReference Include="..\PokeApi\PokeApi.csproj" />
+     <ProjectReference Include="..\Api\Api.csproj" />
      <ProjectReference Include="..\Services\Services.csproj" />
    </ItemGroup>
 
