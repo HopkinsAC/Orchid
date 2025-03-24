@@ -16,10 +16,12 @@ public interface IPokeApi
    
    // Properties
    //
-   Task<NamedUrlResponse?> GetPokedexesAsync();
-
+   
    // Methods
    //
+   Task<NamedUrlResponse?> GetPokedexesAsync();
+   
+   Task<PokedexResponse?> GetPokedexAsync(string requestUrl);
 }
 
 public class PokeApi(HttpClient httpClient) : IPokeApi
@@ -35,7 +37,12 @@ public class PokeApi(HttpClient httpClient) : IPokeApi
       using var mp = new MethodProfiler();
 #endif
        
-      return await Get<NamedUrlResponse>("pokedexes", 0, 50);
+      return await Get<NamedUrlResponse>("pokedex", 0, 50);
+   }
+
+   public async Task<PokedexResponse?> GetPokedexAsync(string requestUrl)
+   {
+      return await Get<PokedexResponse>(requestUrl);
    }
    
    // Implementation

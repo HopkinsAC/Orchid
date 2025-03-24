@@ -22,7 +22,11 @@ public class Pokedex
    public string Description { get; init; } = string.Empty;
 
    public List<PokedexEntry> PokedexEntries { get; } = new List<PokedexEntry>();
-   
+
+   public override string ToString()
+      =>
+         $"{Id.Value}-{Name}";
+
    // Implementation
    //
 }
