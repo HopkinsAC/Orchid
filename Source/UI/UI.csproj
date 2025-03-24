@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+   <PropertyGroup>
+      <AssemblyName>Orchid.Pokedex</AssemblyName>
+      <RootNamespace>Orchid.UI</RootNamespace>
+      <IsPackable>false</IsPackable>
+   </PropertyGroup>
+
+   <PropertyGroup>
+      <OutputType>WinExe</OutputType>
+      <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+      <ApplicationManifest>app.manifest</ApplicationManifest>
+      <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+   </PropertyGroup>
+
+   <ItemGroup>
+      <AvaloniaResource Include="Assets\**"/>
+   </ItemGroup>
+
+   <ItemGroup>
+      <PackageReference Include="Avalonia" Version="11.2.2"/>
+      <PackageReference Include="Avalonia.Desktop" Version="11.2.2"/>
+      <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.2"/>
+      <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.2"/>
+      <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.2.2" />
+
+      <!-- Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration. -->
+      <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.2"/>
+
+      <!-- Needed to enable Prism support -->
+      <PackageReference Include="Prism.Avalonia" Version="9.0.537.11130" />
+      <PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.537.11130" />
+
+      <!-- Configuration Support -->
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.3" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.3" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <ProjectReference Include="..\Core\Core.csproj" />
+     <ProjectReference Include="..\Domain\Domain.csproj" />
+     <ProjectReference Include="..\PokeApi\PokeApi.csproj" />
+     <ProjectReference Include="..\Services\Services.csproj" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <Compile Update="Views\MainWindow.axaml.cs">
+       <DependentUpon>MainWindow.axaml</DependentUpon>
+       <SubType>Code</SubType>
+     </Compile>
+   </ItemGroup>
+
+</Project>

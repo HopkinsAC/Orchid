@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+   <PropertyGroup>
+      <AssemblyName>Orchid.PokeApi</AssemblyName>
+      <RootNamespace>Orchid.PokeApi</RootNamespace>
+   </PropertyGroup>
+
+   <ItemGroup>
+     <ProjectReference Include="..\Core\Core.csproj" />
+   </ItemGroup>
+
+</Project>
