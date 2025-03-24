@@ -2,68 +2,128 @@
 // Copyright (C) 2025.  Andrew C. Hopkins.  All Rights Reserved.
 //
 
+using System.Security.Cryptography;
+using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using Microsoft.Extensions.Logging;
 using Orchid.Logging;
 using Orchid.Profiling;
-using Orchid.UI.ViewModels;
 using Orchid.UI.Views;
+using Prism.DryIoc;
 
 namespace Orchid.UI;
 
-public partial class App : Avalonia.Application
+public partial class App : PrismApplication 
 {
    // Construction
    //
-   public App()
-   {
-#if PROFILING
-      ProfileServer.Instance.BeginSession();
-      using var mp = new MethodProfiler(); 
-#endif
-
-      Log.Initialize();
-   }
   
    // API
    //
    public override void Initialize()
    {
  #if PROFILING
+       ProfileServer.Instance.BeginSession();
        using var mp = new MethodProfiler(); 
  #endif
  
        AvaloniaXamlLoader.Load(this);
+       
+       Log.Initialize();
+       base.Initialize();
    }
 
-   public override void OnFrameworkInitializationCompleted()
+   public override async void OnFrameworkInitializationCompleted()
    {
 #if PROFILING
       using var mp = new MethodProfiler(); 
 #endif
-        
-      if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-      {
-         // Line below is needed to remove Avalonia data validation.
-         // Without this line you will get duplicate validations from both Avalonia and CT
-         BindingPlugins.DataValidators.RemoveAt(0);
-         desktop.MainWindow = new MainWindow
-         {
-            DataContext = new MainWindowViewModel(),
-         };
 
-         desktop.Exit += (_, __) =>
-         {
-#if PROFILING
-            ProfileServer.Instance.EndSession();
-#endif
-         };
+      // We don't support running on non classical desktops (no mobile), so
+      // simply bail out and return to the caller.
+      //
+      if (ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop)
+      {
+         return;
       }
+      
+      var splashWindow = Container.Resolve<SplashWindow>();
+      desktop.MainWindow = splashWindow;
+      splashWindow.Show();
+      
+      // We display the splash screen for two seconds, and then being loading
+      // the cached pokemon data.
+      //
+      try
+      {
+         await Task.Delay(TimeSpan.FromSeconds(2));
+         await Task.Run(LoadData);
+      }
+      
+      catch (TaskCanceledException)
+      {
+         splashWindow.Close();
+         return;
+      }
+
+      var shell = Container.Resolve<MainWindow>(); 
+      var regionManager = Container.Resolve<IRegionManager>();
+      
+      RegionManager.SetRegionManager(shell, regionManager);
+      RegionManager.UpdateRegions();
+      
+      InitializeShell(shell);
+
+      desktop.MainWindow = shell;
+      desktop.MainWindow?.Show();
+      
+      splashWindow.Close();
+
+      // Need this block so that I can shut down the profiler session when the
+      // application closes.
+      // 
+      desktop.Exit += OnExit;
 
       base.OnFrameworkInitializationCompleted();
    }
 
+   protected override void RegisterTypes(IContainerRegistry containerRegistry)
+   {
+#if PROFILING
+      using var mp = new MethodProfiler();
+#endif
+
+   }
+
+   protected override AvaloniaObject CreateShell()
+   {
+#pragma warning disable CS8603 // Possible null reference return.
+      return null;
+#pragma warning restore CS8603 // Possible null reference return.
+   }
+
    // Implementation
    //
+   
+   private void LoadData()
+   {
+      try
+      {
+      }
+   
+      catch (Exception e)
+      {
+         Log.CoreLogger.LogError("Failed to load cached data - {desc}", e.Message);
+      }
+   }
+
+   private static void OnExit(object? sender, ControlledApplicationLifetimeExitEventArgs e)
+   {
+#if PROFILING
+      ProfileServer.Instance.EndSession();
+#endif
+      
+   }
+
 }

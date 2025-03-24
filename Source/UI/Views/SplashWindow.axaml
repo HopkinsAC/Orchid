@@ -1,0 +1,32 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+        mc:Ignorable="d"
+        d:DesignWidth="800"
+        d:DesignHeight="450"
+
+        x:Class="Orchid.UI.Views.SplashWindow"
+
+        Title="Rose/Orchid Pokédex"
+
+        SystemDecorations="BorderOnly"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True"
+        >
+
+    <Grid RowDefinitions="9*,1*" ColumnDefinitions="5*,5*">
+
+        <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+               Source="/Assets/Pokemon-Logo.png"/>
+        
+        <ProgressBar Grid.Row="1" Grid.Column="1"
+                     Margin="10 10 10 10"
+                     Foreground="#2B4594"
+                     Height="20"
+                     CornerRadius="10"
+                     VerticalAlignment="Center"
+                     IsIndeterminate="True"/>
+    </Grid>
+</Window>
