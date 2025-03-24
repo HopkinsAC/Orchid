@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{CD1F9985-532D-4319-98F6-2E7E1A2DB5BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{6AC4E7E8-2C27-4356-8999-23FA341F15B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D6BAE363-791F-4C3A-AA61-3F065AB50E75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{5B5CD72A-8502-4505-86A1-7AD01C0664A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{095E4689-5ECB-4BE0-90B7-BF2C21EBF1C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System", "System", "{F8C84A4D-92E5-401C-A9C8-65B924B5176D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{B36B7D08-130F-458B-B0DB-1F4C8D4ED0A4}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\Assets\Mockup-A-0.0.1.png = Docs\Assets\Mockup-A-0.0.1.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5B5CD72A-8502-4505-86A1-7AD01C0664A3} = {D6BAE363-791F-4C3A-AA61-3F065AB50E75}
+		{095E4689-5ECB-4BE0-90B7-BF2C21EBF1C7} = {D6BAE363-791F-4C3A-AA61-3F065AB50E75}
+		{F8C84A4D-92E5-401C-A9C8-65B924B5176D} = {D6BAE363-791F-4C3A-AA61-3F065AB50E75}
+		{B36B7D08-130F-458B-B0DB-1F4C8D4ED0A4} = {6AC4E7E8-2C27-4356-8999-23FA341F15B6}
+	EndGlobalSection
+EndGlobal
