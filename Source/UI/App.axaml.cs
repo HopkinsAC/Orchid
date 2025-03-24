@@ -2,7 +2,6 @@
 // Copyright (C) 2025.  Andrew C. Hopkins.  All Rights Reserved.
 //
 
-using System.Security.Cryptography;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
@@ -11,6 +10,7 @@ using Orchid.Api;
 using Orchid.Logging;
 using Orchid.Profiling;
 using Orchid.Services;
+using Orchid.UI.ViewModels;
 using Orchid.UI.Views;
 using Prism.DryIoc;
 
@@ -81,7 +81,9 @@ public partial class App : PrismApplication
       desktop.MainWindow?.Show();
       
       splashWindow.Close();
-
+      
+      regionManager.RequestNavigate(RegionNames.BookShelf, nameof(BookshelfView));
+      
       // Need this block so that I can shut down the profiler session when the
       // application closes.
       // 
@@ -110,6 +112,11 @@ public partial class App : PrismApplication
       {
          BaseAddress = new Uri("https://pokeapi.co/api/v2/")
       }));
+      
+      var regionManager = Container.Resolve<IRegionManager>();
+      
+      containerRegistry.RegisterForNavigation<BookshelfView, BookshelfViewModel>(); 
+      regionManager.RegisterViewWithRegion(RegionNames.BookShelf, typeof(BookshelfView));
    }
 
    protected override AvaloniaObject CreateShell()

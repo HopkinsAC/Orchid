@@ -10,7 +10,7 @@
    </PropertyGroup>
    
    <PropertyGroup>
-      <DefineConstants>PROFILING</DefineConstants>
+      <DefineConstants></DefineConstants>
    </PropertyGroup>
 
    <PropertyGroup Label="Warnings">

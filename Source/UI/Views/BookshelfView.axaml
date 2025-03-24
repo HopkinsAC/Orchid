@@ -1,0 +1,80 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Orchid.UI.ViewModels"
+
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="450"
+
+             x:Class="Orchid.UI.Views.BookshelfView"
+             x:DataType="vm:BookshelfViewModel"
+             x:CompileBindings="True"
+             >
+        <Grid RowDefinitions="2*,3*" ColumnDefinitions="2*,1*,6*,1*,2*">
+
+            <!-- Shelf -->
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"
+                    CornerRadius="25"
+                    Background="SaddleBrown"
+                    BoxShadow="inset 5 5 20 0 Black">
+
+                <Grid RowDefinitions="1*,4*,1*"
+                      ColumnDefinitions="3*,2*,3*">
+
+                    <!-- Name Plate -->
+                    <Border Grid.Row="1" Grid.Column="1"
+                            CornerRadius="5"
+                            Background="Goldenrod"
+                            BoxShadow="5 5 10 0 Black">
+                        
+                        <ComboBox ItemsSource="{Binding BookCollections}"
+                                  SelectedIndex="{Binding SelectedIndex}"
+                                  HorizontalAlignment="Center"
+                                  Width="300"
+                                  Background="Goldenrod"
+                                  BorderThickness="0"
+                                  Margin="0"
+                                  FontFamily="Academy Engraved LET"
+                                  FontSize="26"
+                                  FontWeight="Bold">
+                            
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Title}"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Left Support -->
+            <Border Grid.Row="1" Grid.Column="1"
+                    CornerRadius="10"
+                    Background="SaddleBrown"
+                    BoxShadow="inset 0 20 30 0 Black">
+                
+                <Border Margin="10" CornerRadius="10"
+                        Background="Transparent"
+                        BorderBrush="Black"
+                        BorderThickness="2" />
+            </Border>
+
+            <!-- Right Support -->
+            <Border Grid.Row="1" Grid.Column="3"
+                    CornerRadius="10"
+                    Background="SaddleBrown"
+                    BoxShadow="inset 0 20 30 0 Black">
+                
+                <Border Margin="10" CornerRadius="10"
+                        Background="Transparent"
+                        BorderBrush="Black"
+                        BorderThickness="2" />
+            </Border>
+
+        </Grid>
+</UserControl>

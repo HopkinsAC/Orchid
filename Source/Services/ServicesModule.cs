@@ -36,8 +36,12 @@ public class ServicesModule : IModule
 
    public void LoadData()
    {
+#if PROFILING
+      using var mp = new MethodProfiler();
+#endif
+         
       var pokedexService = _containerProvider.Resolve<IPokedexService>();
-      Task.Run(() => pokedexService?.LoadPokedexesAsync()).Wait();
+      Task.Run(() => pokedexService.LoadPokedexesAsync()).Wait();
    }
    
    // Implementation
