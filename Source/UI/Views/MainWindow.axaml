@@ -48,7 +48,7 @@
             </DockPanel>
         </Border>
 
-        <ContentControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+        <ContentControl Grid.Row="2" Grid.Column="1"
                         prism:RegionManager.RegionName="{x:Static ui:RegionNames.Books}"
                         />
 

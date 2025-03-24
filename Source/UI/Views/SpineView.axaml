@@ -1,0 +1,67 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Orchid.UI.ViewModels"
+                          
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="450"
+             
+             x:Class="Orchid.UI.Views.SpineView"
+             x:DataType="vm:SpineViewModel"
+             x:CompileBindings="True">
+    
+    <Border CornerRadius="5"
+            Background="Gray"
+            Margin="0 0 0 0"
+            Padding="0 0 0 0"
+            BoxShadow="inset 5 5 20 0 Black">
+        <DockPanel>
+            <Border DockPanel.Dock="Top"
+                    Width="75"
+                    Height="75"
+                    CornerRadius="5"
+                    Background="Blue"
+                    Margin="15" />
+            <Border DockPanel.Dock="Top"
+                    Width="100"
+                    Height="10"
+                    CornerRadius="0"
+                    Background="OrangeRed"
+                    BoxShadow="inset 5 0 20 0 Black"
+                    Margin="0" />
+            <TextBlock DockPanel.Dock="Bottom"
+                       Text="{Binding BookId,StringFormat={}{0:000}}"
+                       Margin="10"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontWeight="Bold"
+                       FontSize="36"
+                       Foreground="Black" />
+            <Border DockPanel.Dock="Bottom"
+                    Width="100"
+                    Height="10"
+                    CornerRadius="0"
+                    Background="OrangeRed"
+                    BoxShadow="inset 5 0 20 0 Black"
+                    Margin="0" />
+
+            <LayoutTransformControl HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Margin="10">
+                <LayoutTransformControl.LayoutTransform>
+                    <RotateTransform Angle="90"></RotateTransform>
+                </LayoutTransformControl.LayoutTransform>
+
+                <TextBlock Text="{Binding Title}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           FontWeight="Bold"
+                           FontSize="36"
+                           Foreground="Black" />
+            </LayoutTransformControl>
+
+        </DockPanel>
+    </Border>
+</UserControl>

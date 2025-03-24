@@ -42,13 +42,7 @@ public class BookshelfViewModel : ViewModelBase, INavigationAware
    }
    public ObservableCollection<IBookCollection> BookCollections { get; } = new();
    
-   public bool IsNavigationTarget(NavigationContext navigationContext) => true;
-   
-   public void OnNavigatedTo(NavigationContext navigationContext)
-   {
-   }
-   
-   public void OnNavigatedFrom(NavigationContext navigationContext)
+   public override void OnNavigatedFrom(NavigationContext navigationContext)
    {
       BookCollections.Clear();
 

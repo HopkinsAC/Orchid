@@ -117,6 +117,9 @@ public partial class App : PrismApplication
       
       containerRegistry.RegisterForNavigation<BookshelfView, BookshelfViewModel>(); 
       regionManager.RegisterViewWithRegion(RegionNames.BookShelf, typeof(BookshelfView));
+      
+      containerRegistry.RegisterForNavigation<BookCollectionView, BookCollectionViewModel>(); 
+      regionManager.RegisterViewWithRegion(RegionNames.Books, typeof(BookCollectionView));
    }
 
    protected override AvaloniaObject CreateShell()

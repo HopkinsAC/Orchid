@@ -1,0 +1,68 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="using:Orchid.UI.Views"
+             xmlns:vm="using:Orchid.UI.ViewModels"
+             
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="450"
+             
+             x:Class="Orchid.UI.Views.BookCollectionView"
+             x:DataType="vm:BookCollectionViewModel"
+             x:CompileBindings="True"
+             >
+    <Border>
+        <Grid ColumnDefinitions="1*,8*,1*">
+            
+            <!-- Naviagtion Buttons -->
+            <Button Grid.Column="0"
+                    x:Name="LeftScrollButton"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Click="LeftScrollButton_OnClick">
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="Left" />
+            </Button>
+
+            <Button Grid.Column="2"
+                    x:Name="RightScrollButton"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Click="RightScrollButton_OnClick">
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="Right" />
+            </Button>
+           
+            <!-- Books -->
+            <ListBox Grid.Column="1"
+                     ItemsSource="{Binding Books}"
+                     Margin="8 0"
+                     Padding="0"
+                     Background="CornflowerBlue">
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem">
+                        <Setter Property="Padding" Value="0" />
+                    </Style>
+                </ListBox.Styles>
+
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <ui:SpineView />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
+        </Grid>
+    </Border>
+    
+</UserControl>
