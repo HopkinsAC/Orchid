@@ -33,6 +33,11 @@ public class BookCollectionViewModel : BindableBase
    //
    public ObservableCollection<SpineViewModel> Books { get; } = [];
 
+   public void Scroll(int offset)
+   {
+      
+   }
+
    // Implementation
    //
 }
